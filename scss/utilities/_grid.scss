@@ -1,9 +1,26 @@
 //Grid Dimensions
-$grid-width: 1280px;
+$grid-width-lrg: 1280px;
+$grid-width-med: 768px;
+$grid-width-sml: 320px;
+
 $num-col-lrg: 12;
 $num-col-med: 6;
 $num-col-sml: 4;
 $gutter: 30px;
+
+.clearfix {
+  &:after {
+   content: " ";
+   display: block;
+   height: 0;
+   clear: both;
+ }
+}
+
+.row {
+  @extend .clearfix;
+  max-width: $grid-width;
+}
 
 .column {
   position: relative;
@@ -19,21 +36,15 @@ $gutter: 30px;
   }
 }
 
-.row {
-  max-width: $grid-width;
-  padding: 0;
-  margin: 0;
-}
-
 .lrg-12 {
-  max-width: $grid-width;
+  width: $grid-width;
 }
 .lrg-6 {
-  max-width: $grid-width/2;
+  width: $grid-width/2;
 }
 .lrg-4 {
-  max-width: $grid-width/3;
+  width: $grid-width/3;
 }
 .lrg-2 {
-  max-width: $grid-width/6;
+  width: $grid-width/6;
 }

@@ -3,6 +3,10 @@ $font-base: 14px;
 $font-stack-titling: "bungee", sans-serif;
 $font-stack-body: "effra", sans-serif;
 
+body {
+  color: $off-black;
+}
+
 h1, h2, h3, h4, p, caption {
   margin: 0;
 }
@@ -18,29 +22,24 @@ h3, h4, p, caption {
 h1 {
   font-size: $font-base*4.236;
   font-weight: 800;
-  color: $pink;
 }
 
 h2 {
   font-size: $font-base*2.618;
   font-weight: 400;
-  color: $off-white;
 }
 
 h3 {
   font-size: $font-base*1.618;
-  color: $off-white;
 }
 
 h4 {
   font-size: $font-base;
   font-weight: bold;
-  color: $pink;
 }
 
 p {
   font-size: $font-base;
-  color: $off-white;
   line-height: $font-base*1.75;
 }
 

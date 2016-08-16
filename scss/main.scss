@@ -1,5 +1,5 @@
 //The basics
-@include "utilities/grid"
+@import "utilities/grid";
 @import "utilities/colors";
 @import "utilities/typography";
 @import "layout";
@@ -7,3 +7,4 @@
 //Components
 @import "components/nav";
 @import "components/footer";
+@import "components/band-card";
