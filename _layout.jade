@@ -1,8 +1,8 @@
 doctype
 html
-  head
-    link(rel="stylesheet" href="/main.css")
+  include ./components/head.jade
   body
     include  ./components/nav.jade
-    != yield
-    include ./components/foot.jade
+    main
+      != yield
+    include ./components/footer.jade

@@ -1,0 +1,39 @@
+//Grid Dimensions
+$grid-width: 1280px;
+$num-col-lrg: 12;
+$num-col-med: 6;
+$num-col-sml: 4;
+$gutter: 30px;
+
+.column {
+  position: relative;
+  float: left;
+  padding-left: $gutter/2;
+  padding-right: $gutter/2;
+  &.no-overflow {
+    overflow: hidden;
+  }
+  &.no-pad {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.row {
+  max-width: $grid-width;
+  padding: 0;
+  margin: 0;
+}
+
+.lrg-12 {
+  max-width: $grid-width;
+}
+.lrg-6 {
+  max-width: $grid-width/2;
+}
+.lrg-4 {
+  max-width: $grid-width/3;
+}
+.lrg-2 {
+  max-width: $grid-width/6;
+}

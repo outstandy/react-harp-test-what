@@ -1,0 +1,19 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $deep-purple;
+}
+
+main, div.container {
+  max-width: 1280px;
+  margin: auto;
+}
+
+.col {
+  position: relative;
+  float: left;
+
+  &.-no-overflow {
+    overflow: hidden;
+  }
+}
