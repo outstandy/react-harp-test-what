@@ -1,10 +1,10 @@
 //Variables
 $font-base: 14px;
-$font-stack-titling: "bungee", sans-serif;
-$font-stack-body: "effra", sans-serif;
+$font-stack-titling: 'bungee', sans-serif;
+$font-stack-body: 'effra', sans-serif;
 
 body {
-  color: $off-black;
+  color: color(off-black);
 }
 
 h1, h2, h3, h4, p, caption {
@@ -45,10 +45,16 @@ p {
 
 caption {
   font-size: $font-base*0.618;
-  color: $off-purple;
+  color: color(off-purple);
 }
 
 //Alignments
+.left{
+  text-align: left;
+}
 .center {
   text-align: center;
+}
+.right {
+  text-right: center;
 }

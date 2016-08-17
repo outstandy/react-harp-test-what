@@ -1,8 +1,47 @@
-//Grid Dimensions
-$grid-width-lrg: 1280px;
-$grid-width-med: 768px;
-$grid-width-sml: 320px;
+//Widths
+$widths: (
+  'x-large': 1440px,
+  'large' : 1280px,
+  'med' : 1024px,
+  'small' : 768px,
+  'x-small' : 320px
+);
 
+@function width($key) {
+  @if map-has-key($widths, $key) {
+    @return map-get($widths, $key);
+  }
+
+  @warn "Unknown `#{$key}` in $widths.";
+  @return null;
+}
+
+//Breakpoints
+$breakpoints: (
+  'x-large': min-width(1281px),
+  'large' : max-width(1280px),
+  'med' : max-width(1024px),
+  'small' : max-width(768px),
+  'x-small' :max-width(320px)
+);
+
+@mixin respond-to($name) {
+  // If the key exists in the map
+  @if map-has-key($breakpoints, $name) {
+    // Prints a media query based on the value
+    @media #{inspect(map-get($breakpoints, $name))} {
+      @content;
+    }
+  }
+
+  // If the key doesn't exist in the map
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Please make sure it is defined in `$breakpoints` map.";
+  }
+}
+
+//Grid Dimensions
 $num-col-lrg: 12;
 $num-col-med: 6;
 $num-col-sml: 4;
@@ -19,7 +58,9 @@ $gutter: 30px;
 
 .row {
   @extend .clearfix;
-  max-width: $grid-width;
+  @include respond-to('large'){
+
+  };
 }
 
 .column {
@@ -36,15 +77,24 @@ $gutter: 30px;
   }
 }
 
-.lrg-12 {
-  width: $grid-width;
+.grid-1-1 {
+  width: 100%;
 }
-.lrg-6 {
-  width: $grid-width/2;
+
+.grid-1-2 {
+  width: 50%;
+  @include respond-to('med') {
+    background-color: blue;
+  }
 }
+
 .lrg-4 {
-  width: $grid-width/3;
+  @include respond-to('large') {
+    width: 33%
+  }
 }
 .lrg-2 {
-  width: $grid-width/6;
+  @include respond-to('large') {
+    width: (100%/$num-col-lrg);
+  }
 }

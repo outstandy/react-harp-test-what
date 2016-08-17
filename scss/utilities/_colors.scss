@@ -1,20 +1,20 @@
-//Variables
-//Primary Color
-$pink: #FF0060;
-$dark-pink: #DC005F;
+//Color map
+$colors: (
+  'pink': #FF0060,
+  'dark-pink': #DC005F,
+  'green' : #3CDFE0,
+  'dark-green' : #18B8C7,
+  'off-white': #f5f5f5,
+  'off-black': #2e2e2e,
+  'deep-purple': #150B26,
+  'off-purple': #A978FF
+);
 
-//Secondary Color
-$green: #3CDFE0;
-$dark-green: #18B8C7;
+@function color($key) {
+  @if map-has-key($colors, $key) {
+    @return map-get($colors, $key);
+  }
 
-//Base White
-$off-white: #f5f5f5;
-
-//Base Black
-$off-black: #2e2e2e;
-
-//Negative Color
-$deep-purple: #150B26;
-
-//Fading Text
-$off-purple: #A978FF;
+  @warn "Unknown `#{$key}` in $colors.";
+  @return null;
+}
