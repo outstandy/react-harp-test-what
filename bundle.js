@@ -2,34 +2,36 @@ var BandGrid = React.createClass({
   displayName: "BandGrid",
 
   render: function () {
-    return React.createElement(BandCard, null);
-  }
-});
-
-var BandCard = React.createClass({
-  displayName: "BandCard",
-
-  render: function () {
     return React.createElement(
       "div",
-      { className: "bandCard" },
-      React.createElement(BandDetails, null)
+      { className: "bandGrid" },
+      React.createElement(
+        BandCard,
+        { bandname: "Roz Raskin", year: "2006" },
+        "Here's some text about the band!"
+      ),
+      React.createElement(
+        BandCard,
+        { bandname: "Arc Iris", year: "2009" },
+        "Here's some MORE text about the band!"
+      )
     );
   }
 });
 
 /* Band Details*/
-var BandDetails = React.createClass({
-  displayName: "BandDetails",
+var BandCard = React.createClass({
+  displayName: "BandCard",
 
   render: function () {
+    var md = new Remarkable();
     return React.createElement(
       "div",
-      { className: "band" },
+      { className: "bandCard" },
       React.createElement(
         "h3",
         { className: "bandName" },
-        this.props.name
+        this.props.bandname
       ),
       React.createElement(
         "h4",
