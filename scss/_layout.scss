@@ -1,9 +1,26 @@
 body {
-  margin: 0;
-  padding: 0;
   background-color: color(off-white);
+  margin: 0;
 }
 
 main {
-  margin: auto;
+}
+
+.row {
+  @include row();
+}
+.grid {
+  @include outer-container;
+}
+.grid-1-1 {
+  @include span-columns(12);
+}
+.grid-1-2 {
+  @include span-columns(6);
+}
+.grid-1-4 {
+  @include span-columns(3);
+}
+.grid-1-12 {
+  @include span-columns(1);
 }

@@ -18,3 +18,22 @@ $colors: (
   @warn "Unknown `#{$key}` in $colors.";
   @return null;
 }
+
+.pink {
+ color: color('pink');
+}
+.dark-pink {
+ color: color('dark-pink');
+}
+.green {
+ color: color('green');
+}
+.dark-green {
+ color: color('dark-green');
+}
+.off-white {
+  color: color('off-white')
+}
+.off-black {
+  color: color('off-black')
+}

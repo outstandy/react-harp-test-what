@@ -1,4 +1,15 @@
 //band card styles
 .band-card {
-  height: 5rem;
+  height: 20rem;
+  @include span-columns(3);
+  @include media(min-width 480px max-width 720px) {
+    @include span-columns(5);
+    height: 15rem;
+  }
+  @include media(max-width 479px) {
+    @include span-columns(12);
+    height: 15rem;
+  }
+  background-color: color('pink');
+  margin-bottom: 10px;
 }
