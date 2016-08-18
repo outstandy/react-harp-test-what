@@ -1,0 +1,23 @@
+{
+  "name": "harpTest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/outstandy/react-harp-test-what.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/outstandy/react-harp-test-what/issues"
+  },
+  "homepage": "https://github.com/outstandy/react-harp-test-what#readme",
+  "devDependencies": {
+    "babel-preset-react": "^6.11.1"
+  }
+}
