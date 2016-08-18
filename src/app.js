@@ -1,6 +1,6 @@
 var App = React.createClass({
   render: function() {
-    return <p>Hello World</p>;
+    return <p className="text off-black">This is the beginning of a beautiful thing!</p>;
   }
 });
 

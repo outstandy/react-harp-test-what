@@ -1,11 +1,11 @@
 var App = React.createClass({
-  displayName: 'App',
+  displayName: "App",
 
   render: function () {
     return React.createElement(
-      'p',
-      null,
-      'Hello World'
+      "p",
+      { className: "text off-black" },
+      "This is the beginning of a beautiful thing!"
     );
   }
 });
