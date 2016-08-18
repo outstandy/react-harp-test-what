@@ -1,16 +1,37 @@
 var BandGrid = React.createClass({
   render: function() {
-    return <div className="band-card">
-      <h3 className="text off-white center">Roz and the Rice Cakes</h3>
-    </div>;
+    return (
+      <BandCard />
+    );
   }
 });
 
-// var BandCard = React.createClass({
-//   render: function(){
-//     return <div className="band-card"><div>;
-//   }
-// });
+var BandCard = React.createClass({
+  render: function() {
+    return (
+      <div className="bandCard">
+        <BandDetails />
+      </div>
+    );
+  }
+});
+
+/* Band Details*/
+var BandDetails = React.createClass({
+  render: function() {
+    return (
+      <div className="band">
+        <h3 className="bandName">
+          {this.props.name}
+        </h3>
+        <h4 className="bandYear">
+          {this.props.year}
+        </h4>
+      </div>
+    );
+  }
+});
+
 
 ReactDOM.render(
   <BandGrid />,
