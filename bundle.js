@@ -1,13 +1,23 @@
-var App = React.createClass({
-  displayName: "App",
+var BandGrid = React.createClass({
+  displayName: "BandGrid",
 
   render: function () {
     return React.createElement(
-      "p",
-      { className: "text off-black" },
-      "This is the beginning of a beautiful thing!"
+      "div",
+      { className: "band-card" },
+      React.createElement(
+        "h3",
+        { className: "text off-white center" },
+        "Roz and the Rice Cakes"
+      )
     );
   }
 });
 
-ReactDOM.render(React.createElement(App, null), document.getElementById('app'));
+// var BandCard = React.createClass({
+//   render: function(){
+//     return <div className="band-card"><div>;
+//   }
+// });
+
+ReactDOM.render(React.createElement(BandGrid, null), document.getElementById('band-grid'));
