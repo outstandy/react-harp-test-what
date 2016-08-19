@@ -1,20 +1,36 @@
 /* Test JSON */
-var data = [
-  {id: 1, bandName: "Roz Raskin and the Rice Cakes", year: 2005, bio: "Here's a blurb about the band!"},
-  {id: 2, bandName: "Arc Iris", year: 2006, bio: "Here's a blurb about the band!"},
-  {id: 3, bandName: "Harry and the Potters", year: 2002, bio: "Here's a blurb about the band!"}
-];
+// var data = [
+//   {id: 1, bandName: "Roz Raskin and the Rice Cakes", year: 2005, bio: "Here's a blurb about the band!"},
+//   {id: 2, bandName: "Arc Iris", year: 2006, bio: "Here's a blurb about the band!"},
+//   {id: 3, bandName: "Harry and the Potters", year: 2002, bio: "Here's a blurb about the band!"}
+// ];
 
 var BandContainer = React.createClass({
+  getInitialState: function() {
+    return {data: []};
+  },
+  componentDidMount: function() {
+    $.ajax({
+      url: this.props.url,
+      dataType: 'json',
+      cache: false,
+      success: function(data) {
+        this.setState({data: data});
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
+  },
   render: function() {
     return (
       <div className="bandContainer">
-        <BandGrid data={this.props.data} />
+        <BandGrid data={this.state.data} />
       </div>
     );
   }
 });
-
+/* Container for the band cards, need to refactor */
 var BandGrid = React.createClass({
   render: function() {
     var bandMap = this.props.data.map(function(band) {
@@ -29,8 +45,7 @@ var BandGrid = React.createClass({
     );
   }
 });
-
-/* Band Details*/
+/* Band details*/
 var BandCard = React.createClass({
   render: function() {
     return (
@@ -50,6 +65,6 @@ var BandCard = React.createClass({
 });
 
 ReactDOM.render(
-  <BandContainer data={data} />,
+  <BandContainer url="api/bands.json" />,
   document.getElementById('band-grid')
 );
