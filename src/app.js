@@ -1,9 +1,30 @@
-var BandGrid = React.createClass({
+/* Test JSON */
+var data = [
+  {id: 1, bandName: "Roz Raskin and the Rice Cakes", year: 2005, bio: "Here's a blurb about the band!"},
+  {id: 2, bandName: "Arc Iris", year: 2006, bio: "Here's a blurb about the band!"},
+  {id: 3, bandName: "Harry and the Potters", year: 2002, bio: "Here's a blurb about the band!"}
+];
+
+var BandContainer = React.createClass({
   render: function() {
     return (
+      <div className="bandContainer">
+        <BandGrid data={this.props.data} />
+      </div>
+    );
+  }
+});
+
+var BandGrid = React.createClass({
+  render: function() {
+    var bandMap = this.props.data.map(function(band) {
+      return (
+        <BandCard key={band.id} bandName={band.bandName} year={band.year} bio={band.bio}/>
+      );
+    });
+    return (
       <div className="bandGrid">
-        <BandCard bandname="Roz Raskin" year="2006">Here's some text about the band!</BandCard>
-        <BandCard bandname="Arc Iris" year="2009">Here's some MORE text about the band!</BandCard>
+        {bandMap}
       </div>
     );
   }
@@ -12,21 +33,23 @@ var BandGrid = React.createClass({
 /* Band Details*/
 var BandCard = React.createClass({
   render: function() {
-    var md = new Remarkable();
     return (
       <div className="bandCard">
         <h3 className="bandName">
-          {this.props.bandname}
+          {this.props.bandName}
         </h3>
         <h4 className="bandYear">
           {this.props.year}
         </h4>
+        <p className="bandBio">
+          {this.props.bio}
+        </p>
       </div>
     );
   }
 });
 
 ReactDOM.render(
-  <BandGrid />,
+  <BandContainer data={data} />,
   document.getElementById('band-grid')
 );
