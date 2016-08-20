@@ -75,10 +75,21 @@ var BandCardAdd = React.createClass({
   handleBandBioChange: function(e) {
     this.setState({bio: e.target.value});
   },
+  handleSubmit: function(e) {
+    e.preventDefault();
+    var bandName = this.state.bandName.trim();
+    var year = this.state.year.trim();
+    var bio = this.state.bio.trim();
+    if (!bandName || !year || !bio) {
+      return;
+    }
+    // TODO: send request to the server
+    this.setState({bandName: '', year: '', bio: ''});
+  },
   render: function(){
     return (
       <div className="bandCard addCard">
-        <form className="addBandForm">
+        <form className="addBandForm" onSubmit={this.handleSubmit}>
           <input
             type="text"
             placeholder="Band name"
