@@ -74,4 +74,4 @@ var BandCard = React.createClass({
   }
 });
 
-ReactDOM.render(React.createElement(BandContainer, { url: "api/bands.json" }), document.getElementById('band-grid'));
+ReactDOM.render(React.createElement(BandContainer, { url: "bands.json" }), document.getElementById('band-grid'));
