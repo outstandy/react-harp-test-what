@@ -43,7 +43,8 @@ var BandGrid = React.createClass({
     return React.createElement(
       "div",
       { className: "bandGrid" },
-      bandMap
+      bandMap,
+      React.createElement(BandCardAdd, null)
     );
   }
 });
@@ -74,4 +75,20 @@ var BandCard = React.createClass({
   }
 });
 
-ReactDOM.render(React.createElement(BandContainer, { url: "bands.json" }), document.getElementById('band-grid'));
+var BandCardAdd = React.createClass({
+  displayName: "BandCardAdd",
+
+  render: function () {
+    return React.createElement(
+      "div",
+      { className: "bandCard addCard" },
+      React.createElement(
+        "h3",
+        { className: "center off-white" },
+        "+"
+      )
+    );
+  }
+});
+
+ReactDOM.render(React.createElement(BandContainer, { url: "data/bands.json" }), document.getElementById('band-grid'));

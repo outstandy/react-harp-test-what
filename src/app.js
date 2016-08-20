@@ -35,12 +35,13 @@ var BandGrid = React.createClass({
   render: function() {
     var bandMap = this.props.data.map(function(band) {
       return (
-        <BandCard key={band.id} bandName={band.bandName} year={band.year} bio={band.bio}/>
+        <BandCard key={band.id} bandName={band.bandName} year={band.year} bio={band.bio} />
       );
     });
     return (
       <div className="bandGrid">
         {bandMap}
+        <BandCardAdd />
       </div>
     );
   }
@@ -64,7 +65,17 @@ var BandCard = React.createClass({
   }
 });
 
+var BandCardAdd = React.createClass({
+  render: function(){
+    return (
+      <div className="bandCard addCard">
+        <h3 className="center off-white">+</h3>
+      </div>
+    );
+  }
+});
+
 ReactDOM.render(
-  <BandContainer url="bands.json" />,
+  <BandContainer url="data/bands.json" />,
   document.getElementById('band-grid')
 );
