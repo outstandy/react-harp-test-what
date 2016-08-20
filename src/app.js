@@ -1,15 +1,5 @@
-/* Test JSON */
-// var data = [
-//   {id: 1, bandName: "Roz Raskin and the Rice Cakes", year: 2005, bio: "Here's a blurb about the band!"},
-//   {id: 2, bandName: "Arc Iris", year: 2006, bio: "Here's a blurb about the band!"},
-//   {id: 3, bandName: "Harry and the Potters", year: 2002, bio: "Here's a blurb about the band!"}
-// ];
-
 var BandContainer = React.createClass({
-  getInitialState: function() {
-    return {data: []};
-  },
-  componentDidMount: function() {
+  loadCommentsFromServer: function() {
     $.ajax({
       url: this.props.url,
       dataType: 'json',
@@ -21,6 +11,13 @@ var BandContainer = React.createClass({
         console.error(this.props.url, status, err.toString());
       }.bind(this)
     });
+  },
+  getInitialState: function() {
+    return {data: []};
+  },
+  componentDidMount: function() {
+    this.loadCommentsFromServer();
+    setInterval(this.loadCommentsFromServer, this.props.pollInterval);
   },
   render: function() {
     return (
@@ -50,7 +47,7 @@ var BandGrid = React.createClass({
 var BandCard = React.createClass({
   render: function() {
     return (
-      <div className="bandCard">
+      <a href="#" className="bandCard">
         <h3 className="bandName">
           {this.props.bandName}
         </h3>
@@ -60,22 +57,54 @@ var BandCard = React.createClass({
         <p className="bandBio">
           {this.props.bio}
         </p>
-      </div>
+      </a>
     );
   }
 });
 
 var BandCardAdd = React.createClass({
+  getInitialState: function() {
+    return {bandName: '', year: '', bio: ''};
+  },
+  handleBandNameChange: function(e) {
+    this.setState({bandName: e.target.value});
+  },
+  handleBandYearChange: function(e) {
+    this.setState({year: e.target.value});
+  },
+  handleBandBioChange: function(e) {
+    this.setState({bio: e.target.value});
+  },
   render: function(){
     return (
       <div className="bandCard addCard">
-        <h3 className="center off-white">+</h3>
+        <form className="addBandForm">
+          <input
+            type="text"
+            placeholder="Band name"
+            value={this.state.bandName}
+            onChange={this.handleBandNameChange}
+          />
+          <input
+            type="text"
+            placeholder="Band year"
+            value={this.state.year}
+            onChange={this.handleBandYearChange}
+          />
+          <input
+            type="text"
+            placeholder="Band bio"
+            value={this.state.bio}
+            onChange={this.handleBandBioChange}
+          />
+          <input type="submit" value="Post" />
+        </form>
       </div>
     );
   }
 });
 
 ReactDOM.render(
-  <BandContainer url="data/bands.json" />,
+  <BandContainer url="data/bands.json" pollInterval={2000} />,
   document.getElementById('band-grid')
 );

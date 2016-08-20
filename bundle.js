@@ -1,17 +1,7 @@
-/* Test JSON */
-// var data = [
-//   {id: 1, bandName: "Roz Raskin and the Rice Cakes", year: 2005, bio: "Here's a blurb about the band!"},
-//   {id: 2, bandName: "Arc Iris", year: 2006, bio: "Here's a blurb about the band!"},
-//   {id: 3, bandName: "Harry and the Potters", year: 2002, bio: "Here's a blurb about the band!"}
-// ];
-
 var BandContainer = React.createClass({
   displayName: "BandContainer",
 
-  getInitialState: function () {
-    return { data: [] };
-  },
-  componentDidMount: function () {
+  loadCommentsFromServer: function () {
     $.ajax({
       url: this.props.url,
       dataType: 'json',
@@ -23,6 +13,13 @@ var BandContainer = React.createClass({
         console.error(this.props.url, status, err.toString());
       }.bind(this)
     });
+  },
+  getInitialState: function () {
+    return { data: [] };
+  },
+  componentDidMount: function () {
+    this.loadCommentsFromServer();
+    setInterval(this.loadCommentsFromServer, this.props.pollInterval);
   },
   render: function () {
     return React.createElement(
@@ -54,8 +51,8 @@ var BandCard = React.createClass({
 
   render: function () {
     return React.createElement(
-      "div",
-      { className: "bandCard" },
+      "a",
+      { href: "#", className: "bandCard" },
       React.createElement(
         "h3",
         { className: "bandName" },
@@ -78,17 +75,47 @@ var BandCard = React.createClass({
 var BandCardAdd = React.createClass({
   displayName: "BandCardAdd",
 
+  getInitialState: function () {
+    return { bandName: '', year: '', bio: '' };
+  },
+  handleBandNameChange: function (e) {
+    this.setState({ bandName: e.target.value });
+  },
+  handleBandYearChange: function (e) {
+    this.setState({ year: e.target.value });
+  },
+  handleBandBioChange: function (e) {
+    this.setState({ bio: e.target.value });
+  },
   render: function () {
     return React.createElement(
       "div",
       { className: "bandCard addCard" },
       React.createElement(
-        "h3",
-        { className: "center off-white" },
-        "+"
+        "form",
+        { className: "addBandForm" },
+        React.createElement("input", {
+          type: "text",
+          placeholder: "Band name",
+          value: this.state.bandName,
+          onChange: this.handleBandNameChange
+        }),
+        React.createElement("input", {
+          type: "text",
+          placeholder: "Band year",
+          value: this.state.year,
+          onChange: this.handleBandYearChange
+        }),
+        React.createElement("input", {
+          type: "text",
+          placeholder: "Band bio",
+          value: this.state.bio,
+          onChange: this.handleBandBioChange
+        }),
+        React.createElement("input", { type: "submit", value: "Post" })
       )
     );
   }
 });
 
-ReactDOM.render(React.createElement(BandContainer, { url: "data/bands.json" }), document.getElementById('band-grid'));
+ReactDOM.render(React.createElement(BandContainer, { url: "data/bands.json", pollInterval: 2000 }), document.getElementById('band-grid'));

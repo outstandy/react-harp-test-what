@@ -1,7 +1,11 @@
 //band card styles
 .bandCard {
   height: 20rem;
+  border: 1px solid color('off-black');
+  padding: 1rem;
+  margin-bottom: 1rem;
   @include span-columns(3);
+  @include omega(4n);
   @include media(min-width 480px max-width 720px) {
     @include span-columns(5);
     height: 15rem;
@@ -10,7 +14,4 @@
     @include span-columns(12);
     height: 15rem;
   }
-  background-color: color('pink');
-  padding: 1rem;
-  margin-bottom: 1rem;
 }
