@@ -1,0 +1,50 @@
+[
+    {
+        "id": "1",
+        "bandName": "Roz Raskin and the Rice Cakes",
+        "year": "2005",
+        "bio": "Here's a blurb about the band!"
+    },
+    {
+        "id": "2",
+        "bandName": "Arc Iris",
+        "year": "2006",
+        "bio": "Here's a blurb about the band!"
+    },
+    {
+        "id": "3",
+        "bandName": "Harry and the Potters",
+        "year": "2002",
+        "bio": "Here's a blurb about the band!"
+    },
+    {
+        "id": "4",
+        "bandName": "Churchburn",
+        "year": "2010",
+        "bio": "Here's a blurb about the band!"
+    },
+    {
+        "id": "5",
+        "bandName": "Math the Band",
+        "year": "2010",
+        "bio": "Here's a blurb about the band!"
+    },
+    {
+        "id": "6",
+        "bandName": "Milk",
+        "year": "2007",
+        "bio": "Here's a blurb about the band!"
+    },
+    {
+        "id": 1471734478864,
+        "bandName": "test",
+        "year": "test",
+        "bio": "test"
+    },
+    {
+        "id": 1471734624725,
+        "bandName": "test 2",
+        "year": "test 2",
+        "bio": "test 2"
+    }
+]
