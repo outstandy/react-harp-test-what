@@ -136,6 +136,6 @@ var BandCardAdd = React.createClass({
 });
 
 ReactDOM.render(
-  <BandContainer url="data/bands.json" pollInterval={2000} />,
+  <BandContainer url="/api/data" pollInterval={2000} />,
   document.getElementById('band-grid')
 );
